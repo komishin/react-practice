@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 1. 読み込�
 
 module.exports = {
   mode: 'development',
-  entry: './src/js/script.ts',
+  entry: './src/js/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -20,7 +20,7 @@ module.exports = {
     rules: [
       // 2. TypeScript用のルールを追加
       {
-        test: /\.ts$/,
+        test: /(\.ts|\.tsx)$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
@@ -46,7 +46,7 @@ module.exports = {
   // 拡張子の解決設定を追加（重要！）
   // これにより、import時に .ts や .js を省略できるようになります
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new HtmlWebpackPlugin({
