@@ -8,7 +8,7 @@ type TodoItemProps = {
 // const TodoItem: React.FC<TodoItemProps> = ({task, deadline}) => {
 export const TodoItem = ({ task, deadline }: TodoItemProps) => {
   return (
-    <li>
+    <li className="text-3xl font-bold underline">
       {task}締め切り：{deadline}
     </li>
   )
