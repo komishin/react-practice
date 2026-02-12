@@ -3,12 +3,26 @@ import { TodoList } from './components/TodoList'
 import { Heading } from './components/Heading'
 import { TextField } from './components/TextField'
 
+type Todo = {
+  task: string
+  person: string
+  deadline: string
+}
+
 export const App = () => {
+  const [todoList, setTodoList] = useState<Todo[]>([])
   const [newTask, setNewTask] = useState<string>('')
   const [newPerson, setNewPerson] = useState<string>('')
   const [newDeadline, setNewDeadline] = useState<string>('')
 
-  console.log(newTask)
+  const addNewTodo = () => {
+    //...prevは前の入力値を残すという意味
+    //...は一旦の中身を出す（露わにする）
+    setTodoList((prev) => [
+      ...prev,
+      { task: newTask, person: newPerson, deadline: newDeadline },
+    ])
+  }
 
   return (
     <main className="my-0 mx-auto w-4/5 text-center">
@@ -31,6 +45,9 @@ export const App = () => {
         value={newDeadline}
         onChange={setNewDeadline}
       ></TextField>
+      <button className="border bg-cyan-400" onClick={addNewTodo}>
+        追加
+      </button>
       <p>{newTask}</p>
       <p>{newPerson}</p>
       <p>{newDeadline}</p>
