@@ -1,15 +1,8 @@
 import React, { useState } from 'react'
 import { TodoList } from './components/todo/TodoList'
 import { Heading } from './components/parts/Heading'
-import { TextField } from './components/parts/TextField'
 import { NewTodoForm } from './components/todo/NewTodoForm'
-
-export type Todo = {
-  id: number
-  task: string
-  person: string
-  deadline: string
-}
+import { Todo } from './components/todo/type'
 
 export const App = () => {
   const [todoList, setTodoList] = useState<Todo[]>([])
@@ -17,8 +10,20 @@ export const App = () => {
   return (
     <main className="my-0 mx-auto w-4/5 text-center">
       <Heading level="h1">TODO</Heading>
-      <NewTodoForm setTodoList={setTodoList} />
+      <div className='mt-8'>
+        <Heading level="h2">新規TODO作成</Heading>
+        <div className='mt-8'>
+        <NewTodoForm setTodoList={setTodoList} />
+        </div>
+      </div>
+      <div className='mt-8'>
+      <Heading level="h2">TODO一覧</Heading>
+      <div className='mt-8'>
       <TodoList todoList={todoList} />
+      </div>
+      </div>
     </main>
   )
 }
+export { Todo }
+

@@ -30,28 +30,31 @@ export const NewTodoForm = ({ setTodoList }: Props) => {
   }
 
   return (
-    <>
+    <div className="flex gap-5">
       <TextField
+        id="new-task"
         label="タスク名"
         type="text"
         value={newTask}
         onChange={setNewTask}
       ></TextField>
       <TextField
+        id="new-person"
         label="担当者名"
         type="text"
         value={newPerson}
         onChange={setNewPerson}
       ></TextField>
       <TextField
+        id="new-deadline"
         label="締切"
         type="date"
         value={newDeadline}
         onChange={setNewDeadline}
       ></TextField>
-      <button className="border bg-cyan-400" onClick={addNewTodo}>
+      <button className="border bg-cyan-400 w-16 rounded" onClick={addNewTodo}>
         追加
       </button>
-    </>
+    </div>
   )
 }

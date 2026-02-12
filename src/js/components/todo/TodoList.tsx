@@ -8,7 +8,7 @@ type Props = {
 
 export const TodoList = ({ todoList }: Props) => {
   return (
-    <ul className="mt-4 bg-emerald-100 p-4 rounded">
+    <ul className="bg-emerald-100 p-4 rounded">
       <li className="grid grid-cols-3 font-bold">
         <div>タスク名</div>
         <div>担当者名</div>
