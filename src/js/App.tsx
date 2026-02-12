@@ -21,8 +21,17 @@ export const App = () => {
     //...は一旦の中身を出す（露わにする）
     setTodoList((prev) => [
       ...prev,
-      { id: Date.now(), task: newTask, person: newPerson, deadline: newDeadline },
+      {
+        id: Date.now(),
+        task: newTask,
+        person: newPerson,
+        deadline: newDeadline,
+      },
     ])
+
+    setNewTask("")
+    setNewPerson("")
+    setNewDeadline("")
   }
 
   return (
