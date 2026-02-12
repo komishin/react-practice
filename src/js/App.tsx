@@ -3,7 +3,8 @@ import { TodoList } from './components/TodoList'
 import { Heading } from './components/Heading'
 import { TextField } from './components/TextField'
 
-type Todo = {
+export type Todo = {
+  id: number
   task: string
   person: string
   deadline: string
@@ -20,7 +21,7 @@ export const App = () => {
     //...は一旦の中身を出す（露わにする）
     setTodoList((prev) => [
       ...prev,
-      { task: newTask, person: newPerson, deadline: newDeadline },
+      { id: Date.now(), task: newTask, person: newPerson, deadline: newDeadline },
     ])
   }
 
@@ -48,10 +49,7 @@ export const App = () => {
       <button className="border bg-cyan-400" onClick={addNewTodo}>
         追加
       </button>
-      <p>{newTask}</p>
-      <p>{newPerson}</p>
-      <p>{newDeadline}</p>
-      <TodoList />
+      <TodoList todoList={todoList} />
     </main>
   )
 }
