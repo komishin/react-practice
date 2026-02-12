@@ -29,6 +29,7 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader, // 2. style-loaderからこれに差し替え！
           'css-loader',
+          'postcss-loader',
         ],
       },
       {
