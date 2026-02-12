@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { TodoList } from './components/TodoList'
 import '../css/main.css'
+import { App } from './App'
 
 // document.body.innerHTML = '<div id="app"></div>'
 
@@ -26,4 +26,4 @@ import '../css/main.css'
 // ReactDOM.render(<TodoItem task="掃除" deadline="明日まで"/>, document.getElementById('root'))
 
 const root = createRoot(document.getElementById('app')!)
-root.render(<TodoList />)
+root.render(<App />)
