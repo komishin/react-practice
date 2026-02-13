@@ -32,7 +32,7 @@ export const App = () => {
       <div className="mt-8">
         <Heading level="h2">TODO一覧</Heading>
         <div className="mt-8">
-          <TodoList todoList={todoList} />
+          <TodoList todoList={todoList} setTodoList={setTodoList} />
         </div>
       </div>
     </main>
