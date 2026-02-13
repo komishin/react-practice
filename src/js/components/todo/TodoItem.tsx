@@ -1,5 +1,6 @@
 import React from 'react'
 import { Todo } from './type'
+import { Button } from '../parts/Button'
 
 type TodoItemProps = {
   id: number
@@ -17,19 +18,19 @@ export const TodoItem = ({
   deadline,
   setTodoList,
 }: TodoItemProps) => {
+  const deleteTodo = () =>
+    setTodoList((prev) => prev.filter((todo) => todo.id !== id))
+
   return (
     <li className="grid grid-cols-4 pb-1">
       <div>{task}</div>
       <div>{person}</div>
       <div>締め切り：{deadline}</div>
       <div>
-        <button
-          className="border bg-red-400 w-16 rounded"
-          //filter=今の条件に合うものだけを残す（クリックして一致したidのもの以外残す）
-          onClick={() => setTodoList((prev) => prev.filter((todo) => todo.id !== id))}
-        >
+        {/* filter=今の条件に合うものだけを残す（クリックして一致したidのもの以外残す） */}
+        <Button onClick={deleteTodo} color="red">
           削除
-        </button>
+        </Button>
       </div>
     </li>
   )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { TextField } from '../parts/TextField'
 import { Todo } from '../../App'
+import { Button } from '../parts/Button'
 
 type Props = {
   setTodoList: React.Dispatch<React.SetStateAction<Todo[]>>
@@ -52,9 +53,7 @@ export const NewTodoForm = ({ setTodoList }: Props) => {
         value={newDeadline}
         onChange={setNewDeadline}
       ></TextField>
-      <button className="border bg-cyan-400 w-16 rounded" onClick={addNewTodo}>
-        追加
-      </button>
+      <Button onClick={addNewTodo} color="blue">追加</Button>
     </div>
   )
 }
