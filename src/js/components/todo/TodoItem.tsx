@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from '../parts/Button'
+import { AuthContext } from '../../contexts/AuthContext'
 
 type TodoItemProps = {
   id: number
@@ -17,6 +18,8 @@ export const TodoItem = ({
   deadline,
   deleteTodo,
 }: TodoItemProps) => {
+    const { isLoggedIn } = useContext(AuthContext)
+  
 
   return (
     <li className="grid grid-cols-4 pb-1">
@@ -28,6 +31,8 @@ export const TodoItem = ({
         <Button onClick={() => deleteTodo(id)} color="red">
           削除
         </Button>
+              <div>{isLoggedIn ? 'ログイン中' : 'ログアウト中'}</div>
+
       </div>
     </li>
   )
