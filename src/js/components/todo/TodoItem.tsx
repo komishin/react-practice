@@ -1,5 +1,4 @@
 import React from 'react'
-import { Todo } from './type'
 import { Button } from '../parts/Button'
 
 type TodoItemProps = {
@@ -7,7 +6,7 @@ type TodoItemProps = {
   task: string
   person: string
   deadline: string
-  setTodoList: React.Dispatch<React.SetStateAction<Todo[]>>
+  deleteTodo: (id: number) => void
 }
 
 // const TodoItem: React.FC<TodoItemProps> = ({task, deadline}) => {
@@ -16,10 +15,8 @@ export const TodoItem = ({
   task,
   person,
   deadline,
-  setTodoList,
+  deleteTodo,
 }: TodoItemProps) => {
-  const deleteTodo = () =>
-    setTodoList((prev) => prev.filter((todo) => todo.id !== id))
 
   return (
     <li className="grid grid-cols-4 pb-1">
@@ -28,7 +25,7 @@ export const TodoItem = ({
       <div>締め切り：{deadline}</div>
       <div>
         {/* filter=今の条件に合うものだけを残す（クリックして一致したidのもの以外残す） */}
-        <Button onClick={deleteTodo} color="red">
+        <Button onClick={() => deleteTodo(id)} color="red">
           削除
         </Button>
       </div>

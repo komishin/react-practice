@@ -4,27 +4,17 @@ import { Todo } from '../../App'
 import { Button } from '../parts/Button'
 
 type Props = {
-  setTodoList: React.Dispatch<React.SetStateAction<Todo[]>>
+  addTodo: (newTask: string, newPerson: string, newDeadline: string) => void
 }
 
-export const NewTodoForm = ({ setTodoList }: Props) => {
+export const NewTodoForm = ({addTodo }: Props) => {
   const [newTask, setNewTask] = useState<string>('')
   const [newPerson, setNewPerson] = useState<string>('')
   const [newDeadline, setNewDeadline] = useState<string>('')
 
   const addNewTodo = () => {
-    //...prevは前の入力値を残すという意味
-    //...は一旦の中身を出す（露わにする）
-    setTodoList((prev: Todo[]) => [
-      ...prev,
-      {
-        id: Date.now(),
-        task: newTask,
-        person: newPerson,
-        deadline: newDeadline,
-      },
-    ])
 
+    addTodo(newTask, newPerson, newDeadline)
     setNewTask('')
     setNewPerson('')
     setNewDeadline('')
