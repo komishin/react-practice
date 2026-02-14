@@ -7,12 +7,13 @@ import { useTodoList } from './components/todo/use-todoList'
 import { AuthContext } from './contexts/AuthContext'
 import { TextField } from './components/parts/TextField'
 import { Button } from './components/parts/Button'
+import { useAuth } from './contexts/use-auth'
 
 export const App = () => {
   const { todoList, addTodo, deleteTodo } = useTodoList()
 
-  const { isLoggedIn, setIsLoggedIn, userName, setUserName } =
-    useContext(AuthContext)
+  const { isLoggedIn, login, logout, userName, setUserName } =
+    useAuth()
 
   if (!isLoggedIn)
     return (
@@ -26,7 +27,7 @@ export const App = () => {
             value={userName}
             onChange={setUserName}
           ></TextField>
-          <Button onClick={() => setIsLoggedIn(true)} color="blue">
+          <Button onClick={login} color="blue">
             ログイン
           </Button>
         </div>
@@ -38,7 +39,7 @@ export const App = () => {
       <Heading level="h1">TODO</Heading>
       <div>{userName}</div>
       <div>
-          <Button onClick={() => setIsLoggedIn(false)} color="red">
+          <Button onClick={logout} color="red">
             ログアウト
           </Button>
       </div>

@@ -19,7 +19,7 @@ export const TodoItem = ({
   deleteTodo,
 }: TodoItemProps) => {
     const { isLoggedIn } = useContext(AuthContext)
-  
+
 
   return (
     <li className="grid grid-cols-4 pb-1">
