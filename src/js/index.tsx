@@ -2,6 +2,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import '../css/main.css'
 import { App } from './App'
+import { AuthProvider } from './contexts/AuthContext'
 
 // document.body.innerHTML = '<div id="app"></div>'
 
@@ -26,4 +27,8 @@ import { App } from './App'
 // ReactDOM.render(<TodoItem task="掃除" deadline="明日まで"/>, document.getElementById('root'))
 
 const root = createRoot(document.getElementById('app')!)
-root.render(<App />)
+root.render(
+  <AuthProvider>
+    <App />
+  </AuthProvider>
+)
