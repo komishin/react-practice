@@ -1,5 +1,4 @@
 import React from 'react'
-import { Todo } from './type'
 import { Button } from '../parts/Button'
 
 type TodoItemProps = {
