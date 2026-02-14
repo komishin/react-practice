@@ -17,5 +17,21 @@ export const useTodoList = () => {
     localStorage.setItem('todo-list', JSON.stringify(todoList))
   }, [todoList])
 
-  return { todoList, setTodoList }
+  const addTodo = (newTask: string, newPerson: string, newDeadline: string) =>
+    //...prevは前の入力値を残すという意味
+    //...は一旦の中身を出す（露わにする）
+    setTodoList((prev: Todo[]) => [
+      ...prev,
+      {
+        id: Date.now(),
+        task: newTask,
+        person: newPerson,
+        deadline: newDeadline,
+      },
+    ])
+
+  const deleteTodo = (id: number) =>
+    setTodoList((prev) => prev.filter((todo) => todo.id !== id))
+
+  return { todoList, addTodo, deleteTodo }
 }
