@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { TextField } from '../parts/TextField'
-import { Todo } from '../../App'
 import { Button } from '../parts/Button'
 
 type Props = {

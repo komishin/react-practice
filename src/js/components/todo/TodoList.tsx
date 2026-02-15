@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { TodoItem } from './TodoItem'
-import { Todo } from '../../App'
 import { AuthContext } from '../../contexts/AuthContext'
+import { Todo } from './type'
 
 type Props = {
   todoList: Todo[]

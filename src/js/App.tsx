@@ -2,9 +2,7 @@ import React, { useContext } from 'react'
 import { TodoList } from './components/todo/TodoList'
 import { Heading } from './components/parts/Heading'
 import { NewTodoForm } from './components/todo/NewTodoForm'
-import { Todo } from './components/todo/type'
 import { useTodoList } from './components/todo/use-todoList'
-import { AuthContext } from './contexts/AuthContext'
 import { TextField } from './components/parts/TextField'
 import { Button } from './components/parts/Button'
 import { useAuth } from './contexts/use-auth'
@@ -58,4 +56,3 @@ export const App = () => {
     </main>
   )
 }
-export { Todo }
