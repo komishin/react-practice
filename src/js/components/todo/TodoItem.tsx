@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Button } from '../parts/Button'
 import { AuthContext } from '../../contexts/AuthContext'
-import { useAuth } from '../../contexts/use-auth'
+import { useAuth } from '../../hooks/use-auth'
 
 type TodoItemProps = {
   id: number
