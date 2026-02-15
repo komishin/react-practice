@@ -12,7 +12,7 @@ export const Button = ({
 }: PropsWithChildren<Props>) => {
   const style = color === 'red' ? 'bg-red-400' : 'bg-cyan-400'
   return (
-    <button className={`border  w-16 rounded ${style}`} onClick={onClick}>
+    <button className={`border  w-fit px-1 rounded ${style}`} onClick={onClick}>
       {children}
     </button>
   )

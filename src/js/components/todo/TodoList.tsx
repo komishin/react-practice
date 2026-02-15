@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { TodoItem } from './TodoItem'
-import { Todo } from '../../App'
+import { AuthContext } from '../../contexts/AuthContext'
+import { Todo } from '../../types/todo'
 
 type Props = {
   todoList: Todo[]
@@ -8,6 +9,8 @@ type Props = {
 }
 
 export const TodoList = ({ todoList, deleteTodo }: Props) => {
+  const { isLoggedIn } = useContext(AuthContext)
+
   return (
     <ul className="bg-emerald-100 p-4 rounded">
       <li className="grid grid-cols-4 font-bold">
