@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { memo, useContext } from 'react'
 import { Button } from '../parts/Button'
 import { AuthContext } from '../../contexts/AuthContext'
 import { useAuth } from '../../hooks/use-auth'
@@ -12,7 +12,7 @@ type TodoItemProps = {
 }
 
 // const TodoItem: React.FC<TodoItemProps> = ({task, deadline}) => {
-export const TodoItem = ({
+export const TodoItem = memo(({
   id,
   task,
   person,
@@ -20,6 +20,8 @@ export const TodoItem = ({
   deleteTodo,
 }: TodoItemProps) => {
   const { userName } = useAuth()
+  console.log('TodoItemコンポーネントのレンダー')
+
   const style = userName === person ? 'text-red-600 font-bold' : ''
 
   return (
@@ -35,4 +37,4 @@ export const TodoItem = ({
       </div>
     </li>
   )
-}
+})

@@ -6,6 +6,8 @@ type Props = {
 }
 
 export const Heading = ({ level, children }: PropsWithChildren<Props>) => {
+  console.log('Headingコンポーネントのレンダー')
+
   if (level === 'h1') return <h1 className="text-5xl font-bold">{children}</h1>
   if (level === 'h2') return <h2 className="text-4xl font-bold">{children}</h2>
   if (level === 'h3') return <h3 className="text-3xl font-bold">{children}</h3>

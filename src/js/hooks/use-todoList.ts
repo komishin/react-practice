@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Todo } from '../types/todo'
 
 export const useTodoList = () => {
   const [todoList, setTodoList] = useState<Todo[]>([])
+  const [filterWord, setFilterWord] = useState<string>('')
 
   //マウント時に、一度だけlocalStorageからtodo一覧のデータを取得する
   useEffect(() => {
@@ -30,8 +31,21 @@ export const useTodoList = () => {
       },
     ])
 
-  const deleteTodo = (id: number) =>
-    setTodoList((prev) => prev.filter((todo) => todo.id !== id))
+  const deleteTodo = useCallback(
+    (id: number) =>
+      setTodoList((prev) => prev.filter((todo) => todo.id !== id)),
+    []
+  )
 
-  return { todoList, addTodo, deleteTodo }
+  const filteredTodoList = useMemo(() => todoList.filter(
+    (todo) => todo.task.includes(filterWord) || todo.person.includes(filterWord)
+  ),[todoList, filterWord])
+
+  return {
+    todoList: filteredTodoList,
+    addTodo,
+    deleteTodo,
+    filterWord,
+    setFilterWord,
+  }
 }

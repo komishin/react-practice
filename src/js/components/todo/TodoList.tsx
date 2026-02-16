@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React, { memo, useContext } from 'react'
 import { TodoItem } from './TodoItem'
-import { AuthContext } from '../../contexts/AuthContext'
 import { Todo } from '../../types/todo'
 
 type Props = {
@@ -8,8 +7,8 @@ type Props = {
   deleteTodo: (id: number) => void
 }
 
-export const TodoList = ({ todoList, deleteTodo }: Props) => {
-  const { isLoggedIn } = useContext(AuthContext)
+export const TodoList = memo(({ todoList, deleteTodo }: Props) => {
+  console.log('TodoListコンポーネントのレンダー')
 
   return (
     <ul className="bg-emerald-100 p-4 rounded">
@@ -31,4 +30,4 @@ export const TodoList = ({ todoList, deleteTodo }: Props) => {
       ))}
     </ul>
   )
-}
+})
