@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { memo, useContext } from 'react'
 import { TodoItem } from './TodoItem'
 import { Todo } from '../../types/todo'
 
@@ -7,7 +7,7 @@ type Props = {
   deleteTodo: (id: number) => void
 }
 
-export const TodoList = ({ todoList, deleteTodo }: Props) => {
+export const TodoList = memo(({ todoList, deleteTodo }: Props) => {
   console.log('TodoListコンポーネントのレンダー')
 
   return (
@@ -30,4 +30,4 @@ export const TodoList = ({ todoList, deleteTodo }: Props) => {
       ))}
     </ul>
   )
-}
+})
