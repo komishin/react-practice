@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { TodoItem } from './TodoItem'
-import { AuthContext } from '../../contexts/AuthContext'
 import { Todo } from '../../types/todo'
 
 type Props = {
@@ -9,7 +8,7 @@ type Props = {
 }
 
 export const TodoList = ({ todoList, deleteTodo }: Props) => {
-  const { isLoggedIn } = useContext(AuthContext)
+  console.log('TodoListコンポーネントのレンダー')
 
   return (
     <ul className="bg-emerald-100 p-4 rounded">

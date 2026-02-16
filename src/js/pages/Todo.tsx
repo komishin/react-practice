@@ -10,6 +10,8 @@ export const Todo = () => {
   const { todoList, addTodo, deleteTodo } = useTodoList()
 
   const { logout, userName } = useAuth()
+  console.log('Todoコンポーネントのレンダー')
+
   return (
     <main className="my-0 mx-auto w-4/5 text-center">
       <Heading level="h1">TODO</Heading>

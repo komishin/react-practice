@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Todo } from '../types/todo'
 
 export const useTodoList = () => {
@@ -30,8 +30,11 @@ export const useTodoList = () => {
       },
     ])
 
-  const deleteTodo = (id: number) =>
-    setTodoList((prev) => prev.filter((todo) => todo.id !== id))
+  const deleteTodo = useCallback(
+    (id: number) =>
+      setTodoList((prev) => prev.filter((todo) => todo.id !== id)),
+    []
+  )
 
   return { todoList, addTodo, deleteTodo }
 }
