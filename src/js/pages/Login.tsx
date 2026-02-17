@@ -1,12 +1,12 @@
 import React from 'react'
 import { Heading } from '../components/parts/Heading'
 import { TextField } from '../components/parts/TextField'
-import { Button } from '../components/parts/Button'
+
 import { useAuth } from '../hooks/use-auth'
+import { Button } from '@chakra-ui/react'
 
 export const Login = () => {
   const { login, userName, setUserName } = useAuth()
-  console.log("loginコンポーネントのレンダー")
   return (
     <main className="my-0 mx-auto w-4/5 text-center">
       <Heading level="h1">ログイン</Heading>
@@ -18,9 +18,10 @@ export const Login = () => {
           value={userName}
           onChange={setUserName}
         ></TextField>
-        <Button onClick={login} color="blue">
+        {/* <Button onClick={login} color="blue">
           ログイン
-        </Button>
+        </Button> */}
+        <Button colorScheme='blue' onClick={login}>ログイン</Button>
       </div>
     </main>
   )

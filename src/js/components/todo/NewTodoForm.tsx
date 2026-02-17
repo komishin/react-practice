@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { TextField } from '../parts/TextField'
-import { Button } from '../parts/Button'
+import { Button } from '@chakra-ui/react'
+
 
 type Props = {
   addTodo: (newTask: string, newPerson: string, newDeadline: string) => void
@@ -10,7 +11,6 @@ export const NewTodoForm = ({addTodo }: Props) => {
   const [newTask, setNewTask] = useState<string>('')
   const [newPerson, setNewPerson] = useState<string>('')
   const [newDeadline, setNewDeadline] = useState<string>('')
-  console.log('NewTodoFormコンポーネントのレンダー')
   const addNewTodo = () => {
 
     addTodo(newTask, newPerson, newDeadline)
@@ -42,7 +42,7 @@ export const NewTodoForm = ({addTodo }: Props) => {
         value={newDeadline}
         onChange={setNewDeadline}
       ></TextField>
-      <Button onClick={addNewTodo} color="blue">追加</Button>
+      <Button onClick={addNewTodo} colorScheme="blue">追加</Button>
     </div>
   )
 }

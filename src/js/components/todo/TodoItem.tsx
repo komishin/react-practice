@@ -1,7 +1,7 @@
 import React, { memo, useContext } from 'react'
-import { Button } from '../parts/Button'
-import { AuthContext } from '../../contexts/AuthContext'
+
 import { useAuth } from '../../hooks/use-auth'
+import { Button } from '@chakra-ui/react'
 
 type TodoItemProps = {
   id: number
@@ -31,7 +31,7 @@ export const TodoItem = memo(({
       <div>締め切り：{deadline}</div>
       <div>
         {/* filter=今の条件に合うものだけを残す（クリックして一致したidのもの以外残す） */}
-        <Button onClick={() => deleteTodo(id)} color="red">
+        <Button onClick={() => deleteTodo(id)} colorScheme="red" size={"xs"}>
           削除
         </Button>
       </div>
