@@ -4,6 +4,7 @@ import { TodoList } from '../components/todo/TodoList'
 import { useAuth } from '../hooks/use-auth'
 import { useTodoList } from '../hooks/use-todoList'
 import { Avatar, Box, Button, Heading, HStack, Input } from '@chakra-ui/react'
+import { TodoTable } from '../components/todo/TodoTable'
 
 export const Todo = () => {
   const { todoList, addTodo, deleteTodo, filterWord, setFilterWord } =
@@ -13,7 +14,7 @@ export const Todo = () => {
 
   return (
     <Box as="main" w="850px" mx={'auto'} mt={20}>
-      <HStack as='header' spacing="4" justifyContent={'space-between'}>
+      <HStack as="header" spacing="4" justifyContent={'space-between'}>
         <Heading as="h1" size="2xl">
           TODO
         </Heading>
@@ -29,7 +30,7 @@ export const Todo = () => {
           </Box>
         </HStack>
       </HStack>
-      <Box as='section' mt="20">
+      <Box as="section" mt="20">
         <Heading as="h2" size="xl">
           新規TODO作成
         </Heading>
@@ -37,7 +38,7 @@ export const Todo = () => {
           <NewTodoForm addTodo={addTodo} />
         </Box>
       </Box>
-      <Box as='section' mt="20">
+      <Box as="section" mt="20">
         <Heading as="h2">TODO一覧</Heading>
         <Box mt="10">
           <Input
@@ -46,10 +47,14 @@ export const Todo = () => {
             placeholder="絞り込み"
             value={filterWord}
             onChange={(e) => setFilterWord(e.target.value)}
+            w={40}
           />
         </Box>
         <Box mt="10">
-          <TodoList todoList={todoList} deleteTodo={deleteTodo} />
+          <TodoTable
+            todoList={todoList}
+            deleteTodo={deleteTodo}
+          />
         </Box>
       </Box>
     </Box>

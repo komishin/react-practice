@@ -1,7 +1,7 @@
 import React, { memo, useContext } from 'react'
 
 import { useAuth } from '../../hooks/use-auth'
-import { Button } from '@chakra-ui/react'
+import { Button, Td, Tr } from '@chakra-ui/react'
 
 type TodoItemProps = {
   id: number
@@ -12,29 +12,22 @@ type TodoItemProps = {
 }
 
 // const TodoItem: React.FC<TodoItemProps> = ({task, deadline}) => {
-export const TodoItem = memo(({
-  id,
-  task,
-  person,
-  deadline,
-  deleteTodo,
-}: TodoItemProps) => {
-  const { userName } = useAuth()
-  console.log('TodoItemコンポーネントのレンダー')
+export const TodoItem = memo(
+  ({ id, task, person, deadline, deleteTodo }: TodoItemProps) => {
+    const { userName } = useAuth()
 
-  const style = userName === person ? 'text-red-600 font-bold' : ''
-
-  return (
-    <li className="grid grid-cols-4 pb-1">
-      <div>{task}</div>
-      <div className={style}>{person}</div>
-      <div>締め切り：{deadline}</div>
-      <div>
-        {/* filter=今の条件に合うものだけを残す（クリックして一致したidのもの以外残す） */}
-        <Button onClick={() => deleteTodo(id)} colorScheme="red" size={"xs"}>
-          削除
-        </Button>
-      </div>
-    </li>
-  )
-})
+    return (
+      <Tr color={userName === person ? 'red' : ''}>
+        <Td>{task}</Td>
+        <Td>{person}</Td>
+        <Td>{deadline}</Td>
+        <Td>
+          {/* filter=今の条件に合うものだけを残す（クリックして一致したidのもの以外残す） */}
+          <Button onClick={() => deleteTodo(id)} colorScheme="red" size={'xs'}>
+            削除
+          </Button>
+        </Td>
+      </Tr>
+    )
+  }
+)

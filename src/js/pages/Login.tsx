@@ -1,20 +1,21 @@
 import React from 'react'
 
 import { useAuth } from '../hooks/use-auth'
-import { Button, Heading, Input } from '@chakra-ui/react'
+import { Box, Button, Heading, HStack, Input } from '@chakra-ui/react'
 
 export const Login = () => {
   const { login, userName, setUserName } = useAuth()
   return (
-    <main className="my-0 mx-auto w-4/5 text-center">
-      <Heading as="h1" size="2xl">
+    <Box as="main" w={400} mx={"auto"} mt={20}>
+      <Heading as="h1" size="xl">
         ログイン
       </Heading>
-      <div className="flex gap-1">
+      <HStack spacing={4} mt={10}>
         <Input
           placeholder="ユーザー名"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
+          w={40}
         />
         {/* <Button onClick={login} color="blue">
           ログイン
@@ -22,7 +23,7 @@ export const Login = () => {
         <Button colorScheme="blue" onClick={login}>
           ログイン
         </Button>
-      </div>
-    </main>
+      </HStack>
+    </Box>
   )
 }
