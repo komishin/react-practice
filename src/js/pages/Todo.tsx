@@ -3,7 +3,7 @@ import { NewTodoForm } from '../components/todo/NewTodoForm'
 import { TodoList } from '../components/todo/TodoList'
 import { useAuth } from '../hooks/use-auth'
 import { useTodoList } from '../hooks/use-todoList'
-import { Button, Heading, Input } from '@chakra-ui/react'
+import { Avatar, Box, Button, Heading, HStack, Input } from '@chakra-ui/react'
 
 export const Todo = () => {
   const { todoList, addTodo, deleteTodo, filterWord, setFilterWord } =
@@ -12,38 +12,46 @@ export const Todo = () => {
   const { logout, userName } = useAuth()
 
   return (
-    <main className="my-0 mx-auto w-4/5 text-center">
-      <Heading as="h1" size="2xl">
-        TODO
-      </Heading>
-      <div>{userName}</div>
-      <div>
-        <Button onClick={logout} colorScheme="red" size="xs">
-          ログアウト
-        </Button>
-      </div>
-      <div className="mt-8">
+    <Box as="main" w="850px" mx={'auto'} mt={20}>
+      <HStack as='header' spacing="4" justifyContent={'space-between'}>
+        <Heading as="h1" size="2xl">
+          TODO
+        </Heading>
+        <HStack spacing="4" justifyContent={'end'}>
+          <HStack spacing={2}>
+            <Avatar bg="teal.500" size={'xs'} />
+            <Box>{userName}</Box>
+          </HStack>
+          <Box>
+            <Button onClick={logout} colorScheme="red" size="xs">
+              ログアウト
+            </Button>
+          </Box>
+        </HStack>
+      </HStack>
+      <Box as='section' mt="20">
         <Heading as="h2" size="xl">
           新規TODO作成
         </Heading>
-        <div className="mt-8">
+        <Box mt="10">
           <NewTodoForm addTodo={addTodo} />
-        </div>
-      </div>
-      <div className="mt-8">
+        </Box>
+      </Box>
+      <Box as='section' mt="20">
         <Heading as="h2">TODO一覧</Heading>
-        <div className="mt-8">
-
+        <Box mt="10">
           <Input
+            id="todo"
+            type="text"
             placeholder="絞り込み"
             value={filterWord}
             onChange={(e) => setFilterWord(e.target.value)}
           />
-        </div>
-        <div className="mt-8">
+        </Box>
+        <Box mt="10">
           <TodoList todoList={todoList} deleteTodo={deleteTodo} />
-        </div>
-      </div>
-    </main>
+        </Box>
+      </Box>
+    </Box>
   )
 }
