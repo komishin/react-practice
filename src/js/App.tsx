@@ -6,13 +6,14 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom'
-import { RouterProvider } from 'react-router'
+import { Navigate, RouterProvider } from 'react-router'
 import { TodoDetail } from './pages/TodoDetail'
 import { NotFound } from './pages/NotFound'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+      <Route path="/" element={<Navigate to="/todo" replace={true} />} />
       <Route path="/login" element={<Login />} />
       <Route path="/todo" element={<Todo />} />
       <Route path="/todo/:id" element={<TodoDetail />} />
