@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NewTodoForm } from '../components/todo/NewTodoForm'
 import { TodoList } from '../components/todo/TodoList'
 import { useAuth } from '../hooks/use-auth'
 import { useTodoList } from '../hooks/use-todoList'
 import { Avatar, Box, Button, Heading, HStack, Input } from '@chakra-ui/react'
 import { TodoTable } from '../components/todo/TodoTable'
+import { useNavigate } from 'react-router-dom'
 
 export const Todo = () => {
   const { todoList, addTodo, deleteTodo, filterWord, setFilterWord } =
     useTodoList()
 
-  const { logout, userName } = useAuth()
+  const { isLoggedIn, logout, userName } = useAuth()
+  const navigate = useNavigate()
+
+  //ログアウト中にアクセスされたら、/loginに背にさせる
+    useEffect(() => {
+      if (!isLoggedIn) {
+        navigate('/login')
+      }
+    }, [isLoggedIn])
 
   return (
     <Box as="main" w="850px" mx={'auto'} mt={20}>
@@ -51,10 +60,7 @@ export const Todo = () => {
           />
         </Box>
         <Box mt="10">
-          <TodoTable
-            todoList={todoList}
-            deleteTodo={deleteTodo}
-          />
+          <TodoTable todoList={todoList} deleteTodo={deleteTodo} />
         </Box>
       </Box>
     </Box>
