@@ -17,7 +17,7 @@ export const useTodoList = () => {
     const updatedTodoList = [
       ...todoList,
       {
-        id: Date.now(),
+        id: Date.now().toString(),
         task: newTask,
         person: newPerson,
         deadline: newDeadline,
@@ -29,7 +29,7 @@ export const useTodoList = () => {
     setTodoList(updatedTodoList)
   }
 
-  const deleteTodo = (id: number) => {
+  const deleteTodo = (id: string) => {
     const updatedTodoList = todoList.filter((todo) => todo.id !== id)
     localStorage.setItem('todo-list', JSON.stringify(updatedTodoList))
     setTodoList(updatedTodoList)

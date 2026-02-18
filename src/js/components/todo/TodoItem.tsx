@@ -2,13 +2,14 @@ import React, { memo, useContext } from 'react'
 
 import { useAuth } from '../../hooks/use-auth'
 import { Button, Td, Tr } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 
 type TodoItemProps = {
-  id: number
+  id: string
   task: string
   person: string
   deadline: string
-  deleteTodo: (id: number) => void
+  deleteTodo: (id: string) => void
 }
 
 // const TodoItem: React.FC<TodoItemProps> = ({task, deadline}) => {
@@ -18,6 +19,9 @@ export const TodoItem = memo(
 
     return (
       <Tr color={userName === person ? 'red' : ''}>
+        <Td>
+          <Link to={`/todo/${id}`}>{id}</Link>
+        </Td>
         <Td>{task}</Td>
         <Td>{person}</Td>
         <Td>{deadline}</Td>
