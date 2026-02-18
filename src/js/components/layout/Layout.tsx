@@ -3,7 +3,11 @@ import React, { Children, PropsWithChildren, useEffect } from 'react'
 import { useAuth } from '../../hooks/use-auth'
 import { useNavigate } from 'react-router-dom'
 
-export const Layout = ({ children }: PropsWithChildren) => {
+type Props = {
+    title: string
+}
+
+export const Layout = ({ title, children }: PropsWithChildren<Props>) => {
   const { isLoggedIn, logout, userName } = useAuth()
     const navigate = useNavigate()
 
@@ -18,7 +22,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
     <Box as="main" w="850px" mx={'auto'} mt={20}>
       <HStack as="header" spacing="4" justifyContent={'space-between'}>
         <Heading as="h1" size="2xl">
-          TODO
+          {title}
         </Heading>
         <HStack spacing="4" justifyContent={'end'}>
           <HStack spacing={2}>
