@@ -3,12 +3,15 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useTodoList } from '../hooks/use-todoList'
 import { Layout } from '../components/layout/Layout'
+import { NotFound } from './NotFound'
 
 export const TodoDetail = () => {
   let { id } = useParams()
   const { todoList } = useTodoList()
 
   const todo = todoList.find((todo) => todo.id === id)
+
+  if (!todo) return <NotFound></NotFound>
 
   return (
     <Layout title="TODO詳細ページ">
