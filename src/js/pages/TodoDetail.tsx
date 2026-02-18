@@ -11,7 +11,7 @@ export const TodoDetail = () => {
   const todo = todoList.find((todo) => todo.id === id)
 
   return (
-    <Layout title="TODOの詳細ページ">
+    <Layout title="TODO詳細ページ">
       <Box as="section" mt="20">
         <Box>ID：{todo?.id}</Box>
         <Box>タスク名：{todo?.task}</Box>

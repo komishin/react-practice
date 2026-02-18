@@ -8,15 +8,15 @@ type Props = {
 }
 
 export const Layout = ({ title, children }: PropsWithChildren<Props>) => {
-  const { isLoggedIn, logout, userName } = useAuth()
+  const { isLoggedIn, isLoginCheckDone, logout, userName } = useAuth()
     const navigate = useNavigate()
 
   //ログアウト中にアクセスされたら、/loginに背にさせる
     useEffect(() => {
-      if (!isLoggedIn) {
+      if ( isLoginCheckDone && !isLoggedIn) {
         navigate('/login')
       }
-    }, [isLoggedIn])
+    }, [isLoginCheckDone, isLoggedIn])
 
   return (
     <Box as="main" w="850px" mx={'auto'} mt={20}>
