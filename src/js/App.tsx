@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import { RouterProvider } from 'react-router'
 import { TodoDetail } from './pages/TodoDetail'
+import { NotFound } from './pages/NotFound'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/todo" element={<Todo />} />
       <Route path="/todo/:id" element={<TodoDetail />} />
+      <Route path="*" element={<NotFound />} />
     </>
   )
 )
