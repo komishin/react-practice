@@ -29,17 +29,11 @@ export const useTodoList = () => {
     setTodoList(updatedTodoList)
   }
 
-  const deleteTodo = useCallback(
-    (id: number) =>
-      {
-        const updatedTodoList = todoList.filter((todo) => todo.id !== id)
-        console.log(id)
-        console.log(updatedTodoList)
-        localStorage.setItem('todo-list', JSON.stringify(updatedTodoList))
-        setTodoList(updatedTodoList)
-      },
-    [todoList]
-  )
+  const deleteTodo = (id: number) => {
+    const updatedTodoList = todoList.filter((todo) => todo.id !== id)
+    localStorage.setItem('todo-list', JSON.stringify(updatedTodoList))
+    setTodoList(updatedTodoList)
+  }
 
   const filteredTodoList = useMemo(
     () =>
