@@ -15,7 +15,7 @@ import { TodoItem } from './TodoItem'
 
 type Props = {
   todoList: Todo[]
-  deleteTodo: (id: number) => void
+  deleteTodo: (id: string) => void
 }
 
 export const TodoTable = memo(({ todoList, deleteTodo }: Props) => {

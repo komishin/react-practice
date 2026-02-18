@@ -4,7 +4,7 @@ import { Todo } from '../../types/todo'
 
 type Props = {
   todoList: Todo[]
-  deleteTodo: (id: number) => void
+  deleteTodo: (id: string) => void
 }
 
 export const TodoList = memo(({ todoList, deleteTodo }: Props) => {

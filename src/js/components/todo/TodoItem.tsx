@@ -5,11 +5,11 @@ import { Button, Td, Tr } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 type TodoItemProps = {
-  id: number
+  id: string
   task: string
   person: string
   deadline: string
-  deleteTodo: (id: number) => void
+  deleteTodo: (id: string) => void
 }
 
 // const TodoItem: React.FC<TodoItemProps> = ({task, deadline}) => {
