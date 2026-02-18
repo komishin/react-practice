@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { NewTodoForm } from '../components/todo/NewTodoForm'
-import { TodoList } from '../components/todo/TodoList'
 import { useAuth } from '../hooks/use-auth'
 import { useTodoList } from '../hooks/use-todoList'
-import { Avatar, Box, Button, Heading, HStack, Input } from '@chakra-ui/react'
+import { Avatar, Box, Heading, Input } from '@chakra-ui/react'
 import { TodoTable } from '../components/todo/TodoTable'
 import { useNavigate } from 'react-router-dom'
+import { Layout } from '../components/layout/Layout'
 
 export const Todo = () => {
   const { todoList, addTodo, deleteTodo, filterWord, setFilterWord } =
@@ -15,30 +15,14 @@ export const Todo = () => {
   const navigate = useNavigate()
 
   //ログアウト中にアクセスされたら、/loginに背にさせる
-    useEffect(() => {
-      if (!isLoggedIn) {
-        navigate('/login')
-      }
-    }, [isLoggedIn])
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login')
+    }
+  }, [isLoggedIn])
 
   return (
-    <Box as="main" w="850px" mx={'auto'} mt={20}>
-      <HStack as="header" spacing="4" justifyContent={'space-between'}>
-        <Heading as="h1" size="2xl">
-          TODO
-        </Heading>
-        <HStack spacing="4" justifyContent={'end'}>
-          <HStack spacing={2}>
-            <Avatar bg="teal.500" size={'xs'} />
-            <Box>{userName}</Box>
-          </HStack>
-          <Box>
-            <Button onClick={logout} colorScheme="red" size="xs">
-              ログアウト
-            </Button>
-          </Box>
-        </HStack>
-      </HStack>
+    <Layout>
       <Box as="section" mt="20">
         <Heading as="h2" size="xl">
           新規TODO作成
@@ -63,6 +47,6 @@ export const Todo = () => {
           <TodoTable todoList={todoList} deleteTodo={deleteTodo} />
         </Box>
       </Box>
-    </Box>
+    </Layout>
   )
 }
