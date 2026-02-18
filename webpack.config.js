@@ -9,12 +9,22 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/',
     clean: true, // 出力前に dist フォルダを綺麗にする（おすすめ！）
   },
   devServer: {
     static: 'dist', // どのフォルダを公開するか
     open: true, // 起動時にブラウザを自動で開く
     hot: true, // 変更箇所だけを賢く更新する（Hot Module Replacement）
+    historyApiFallback: {
+      index: 'index.html',
+    },
+    devMiddleware: {
+      writeToDisk: (filePath) => {
+        // hot-update ファイルを除外
+        return !/\.hot-update\.(js|json|js\.map)$/.test(filePath)
+      },
+    },
   },
   module: {
     rules: [

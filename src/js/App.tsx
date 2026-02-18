@@ -1,14 +1,20 @@
-import React, { useContext } from 'react'
-import { useAuth } from './hooks/use-auth'
+import React from 'react'
 import { Login } from './pages/Login'
 import { Todo } from './pages/Todo'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from 'react-router-dom'
+import { RouterProvider } from 'react-router'
 
-export const App = () => {
-  const { isLoggedIn } = useAuth()
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/login" element={<Login />} />
+      <Route path="/todo" element={<Todo />} />
+    </>
+  )
+)
 
-  if (!isLoggedIn) {
-    return <Login />
-  }
-
-  return <Todo />
-}
+export const App = () => <RouterProvider router={router} />
