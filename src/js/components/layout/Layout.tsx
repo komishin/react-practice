@@ -1,5 +1,5 @@
 import { Box, HStack, Heading, Avatar, Button } from '@chakra-ui/react'
-import React, { Children, PropsWithChildren, useEffect } from 'react'
+import React, { PropsWithChildren, useEffect } from 'react'
 import { useAuth } from '../../hooks/use-auth'
 import { useNavigate } from 'react-router-dom'
 
@@ -17,6 +17,8 @@ export const Layout = ({ title, children }: PropsWithChildren<Props>) => {
         navigate('/login')
       }
     }, [isLoginCheckDone, isLoggedIn])
+
+    if(!isLoginCheckDone || !isLoggedIn) return null
 
   return (
     <Box as="main" w="850px" mx={'auto'} mt={20}>
