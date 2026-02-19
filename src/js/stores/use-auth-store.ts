@@ -8,11 +8,13 @@ type AuthState = {
   setIsLoginCheckDone: (isLoginCheckDone: boolean) => void
   userName: string
   setUserName: (userName: string) => void
+  login: () => void
+  logout: () => void
 }
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       isLoggedIn: false,
       setIsLoggedIn: (_isLoggedIn) => set({ isLoggedIn: _isLoggedIn }),
       isLoginCheckDone: false,
@@ -20,6 +22,14 @@ export const useAuthStore = create<AuthState>()(
         set({ isLoginCheckDone: _isLoginCheckDone }),
       userName: '',
       setUserName: (_userName) => set({ userName: _userName }),
+      login: () => {
+        if (get().userName) {
+          set({ isLoggedIn: true })
+        }
+      },
+      logout: () => {
+        set({ isLoggedIn: false, userName: "" })
+      }
     }),
     {
       name: 'auth-state',
