@@ -1,35 +1,37 @@
-import { useContext, useEffect } from 'react'
-import { AuthContext } from '../contexts/AuthContext'
+// Zustandを使って状態管理とloginやlogout,isLoginCheckDoneの判定処理をできるようにしたので、このカスタムフックは一旦不要になった。
 
-const USER_NAME_KEY = 'user-name'
+// import { useContext, useEffect } from 'react'
+// import { AuthContext } from '../contexts/AuthContext'
 
-export const useAuth = () => {
-  const { isLoggedIn, setIsLoggedIn, isLoginCheckDone, setIsLoginCheckDone, userName, setUserName } =
-    useContext(AuthContext)
+// const USER_NAME_KEY = 'user-name'
 
-  const login = () => {
-    if (userName) {
-      setIsLoggedIn(true)
-      localStorage.setItem(USER_NAME_KEY, userName)
-    }
-  }
+// export const useAuth = () => {
+//   const { isLoggedIn, setIsLoggedIn, isLoginCheckDone, setIsLoginCheckDone, userName, setUserName } =
+//     useContext(AuthContext)
 
-  const logout = () => {
-    setIsLoggedIn(false)
-    setUserName('')
-    localStorage.removeItem(USER_NAME_KEY)
-  }
+//   const login = () => {
+//     if (userName) {
+//       setIsLoggedIn(true)
+//       localStorage.setItem(USER_NAME_KEY, userName)
+//     }
+//   }
 
-  //マウント時にローカルストレージからユーザー名を取得する
-  //ユーザー名が取得できた場合はログイン中として扱う
-  useEffect(() => {
-    const userNameData = localStorage.getItem(USER_NAME_KEY)
-    if (userNameData) {
-      setUserName(userNameData)
-      setIsLoggedIn(true)
-    }
-    setIsLoginCheckDone(true)
-  }, [])
+//   const logout = () => {
+//     setIsLoggedIn(false)
+//     setUserName('')
+//     localStorage.removeItem(USER_NAME_KEY)
+//   }
 
-  return { isLoggedIn, isLoginCheckDone, login, logout, userName, setUserName }
-}
+//   //マウント時にローカルストレージからユーザー名を取得する
+//   //ユーザー名が取得できた場合はログイン中として扱う
+//   useEffect(() => {
+//     const userNameData = localStorage.getItem(USER_NAME_KEY)
+//     if (userNameData) {
+//       setUserName(userNameData)
+//       setIsLoggedIn(true)
+//     }
+//     setIsLoginCheckDone(true)
+//   }, [])
+
+//   return { isLoggedIn, isLoginCheckDone, login, logout, userName, setUserName }
+// }

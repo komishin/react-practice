@@ -1,8 +1,7 @@
-import React, { memo, useContext } from 'react'
-
-import { useAuth } from '../../hooks/use-auth'
+import React, { memo } from 'react'
 import { Button, Td, Tr } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
+import { useAuthStore } from '../../stores/use-auth-store'
 
 type TodoItemProps = {
   id: string
@@ -15,7 +14,7 @@ type TodoItemProps = {
 // const TodoItem: React.FC<TodoItemProps> = ({task, deadline}) => {
 export const TodoItem = memo(
   ({ id, task, person, deadline, deleteTodo }: TodoItemProps) => {
-    const { userName } = useAuth()
+    const { userName } = useAuthStore()
 
     return (
       <Tr color={userName === person ? 'red' : ''}>

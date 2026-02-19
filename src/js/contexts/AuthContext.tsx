@@ -1,32 +1,34 @@
-import React, { PropsWithChildren, useState } from 'react'
+// Zustandを使って状態管理をできるようにしたので、このコンテキストは一旦不要になった。
 
-import { createContext } from 'react'
+// import React, { PropsWithChildren, useState } from 'react'
 
-type AuthContextType = {
-  isLoggedIn: boolean
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
-  isLoginCheckDone:boolean
-  setIsLoginCheckDone:React.Dispatch<React.SetStateAction<boolean>>
-  userName: string
-  setUserName: React.Dispatch<React.SetStateAction<string>>
-}
+// import { createContext } from 'react'
 
-export const AuthContext = createContext<AuthContextType>({
-  isLoggedIn: false,
-  setIsLoggedIn: () => {},
-  isLoginCheckDone: false,
-  setIsLoginCheckDone: () => {},
-  userName: "",
-  setUserName: () => {},
-})
+// type AuthContextType = {
+//   isLoggedIn: boolean
+//   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+//   isLoginCheckDone:boolean
+//   setIsLoginCheckDone:React.Dispatch<React.SetStateAction<boolean>>
+//   userName: string
+//   setUserName: React.Dispatch<React.SetStateAction<string>>
+// }
 
-export const AuthProvider = ({ children }: PropsWithChildren) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-  const [isLoginCheckDone, setIsLoginCheckDone] = useState<boolean>(false)
-  const [userName, setUserName] = useState<string>("")
-  return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn,isLoginCheckDone, setIsLoginCheckDone, userName, setUserName }}>
-      {children}
-    </AuthContext.Provider>
-  )
-}
+// export const AuthContext = createContext<AuthContextType>({
+//   isLoggedIn: false,
+//   setIsLoggedIn: () => {},
+//   isLoginCheckDone: false,
+//   setIsLoginCheckDone: () => {},
+//   userName: "",
+//   setUserName: () => {},
+// })
+
+// export const AuthProvider = ({ children }: PropsWithChildren) => {
+//   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+//   const [isLoginCheckDone, setIsLoginCheckDone] = useState<boolean>(false)
+//   const [userName, setUserName] = useState<string>("")
+//   return (
+//     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn,isLoginCheckDone, setIsLoginCheckDone, userName, setUserName }}>
+//       {children}
+//     </AuthContext.Provider>
+//   )
+// }
