@@ -1,5 +1,5 @@
-import { useContext, useEffect } from 'react'
-import { AuthContext } from '../contexts/AuthContext'
+import { useEffect } from 'react'
+import { useAuthStore } from '../stores/use-auth-store'
 
 const USER_NAME_KEY = 'user-name'
 
@@ -11,7 +11,7 @@ export const useAuth = () => {
     setIsLoginCheckDone,
     userName,
     setUserName,
-  } = useContext(AuthContext)
+  } = useAuthStore()
 
   const login = () => {
     if (userName) {
