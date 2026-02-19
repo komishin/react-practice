@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 type AuthState = {
   isLoggedIn: boolean
@@ -9,12 +10,23 @@ type AuthState = {
   setUserName: (userName: string) => void
 }
 
- export const useAuthStore = create<AuthState>()((set) => ({
-  isLoggedIn: false,
-  setIsLoggedIn: (_isLoggedIn) => set({ isLoggedIn: _isLoggedIn }),
-  isLoginCheckDone: false,
-  setIsLoginCheckDone: (_isLoginCheckDone) =>
-    set({ isLoginCheckDone: _isLoginCheckDone }),
-  userName: '',
-  setUserName: (_userName) => set({ userName: _userName }),
-}))
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set) => ({
+      isLoggedIn: false,
+      setIsLoggedIn: (_isLoggedIn) => set({ isLoggedIn: _isLoggedIn }),
+      isLoginCheckDone: false,
+      setIsLoginCheckDone: (_isLoginCheckDone) =>
+        set({ isLoginCheckDone: _isLoginCheckDone }),
+      userName: '',
+      setUserName: (_userName) => set({ userName: _userName }),
+    }),
+    {
+      name: 'auth-state',
+      partialize: (state) => ({
+        isLoggedIn: state.isLoggedIn,
+        userName: state.userName,
+      }),
+    }
+  )
+)
