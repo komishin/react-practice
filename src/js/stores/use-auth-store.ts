@@ -37,6 +37,21 @@ export const useAuthStore = create<AuthState>()(
         isLoggedIn: state.isLoggedIn,
         userName: state.userName,
       }),
+       onRehydrateStorage: (state) => {
+        console.log('hydration starts')
+
+        // optional
+        return (state, error) => {
+          if (error) {
+            console.log('an error happened during hydration', error)
+          } else {
+            if(state){
+                state.isLoginCheckDone = true
+            }
+            console.log('hydration finished')
+          }
+        }
+      },
     }
   )
 )
