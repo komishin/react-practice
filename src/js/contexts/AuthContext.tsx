@@ -1,3 +1,5 @@
+// Zustandを使って状態管理をできるようにしたので、このコンテキストは一旦不要になった。
+
 // import React, { PropsWithChildren, useState } from 'react'
 
 // import { createContext } from 'react'

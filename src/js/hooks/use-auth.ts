@@ -1,17 +1,37 @@
-import { useEffect } from 'react'
-import { useAuthStore } from '../stores/use-auth-store'
+// Zustandを使って状態管理とloginやlogout,isLoginCheckDoneの判定処理をできるようにしたので、このカスタムフックは一旦不要になった。
 
-export const useAuth = () => {
-  const {
-    isLoggedIn,
-    setIsLoggedIn,
-    isLoginCheckDone,
-    setIsLoginCheckDone,
-    userName,
-    setUserName,
-    login,
-    logout
-  } = useAuthStore()
+// import { useContext, useEffect } from 'react'
+// import { AuthContext } from '../contexts/AuthContext'
 
-  return { isLoggedIn, isLoginCheckDone, login, logout, userName, setUserName }
-}
+// const USER_NAME_KEY = 'user-name'
+
+// export const useAuth = () => {
+//   const { isLoggedIn, setIsLoggedIn, isLoginCheckDone, setIsLoginCheckDone, userName, setUserName } =
+//     useContext(AuthContext)
+
+//   const login = () => {
+//     if (userName) {
+//       setIsLoggedIn(true)
+//       localStorage.setItem(USER_NAME_KEY, userName)
+//     }
+//   }
+
+//   const logout = () => {
+//     setIsLoggedIn(false)
+//     setUserName('')
+//     localStorage.removeItem(USER_NAME_KEY)
+//   }
+
+//   //マウント時にローカルストレージからユーザー名を取得する
+//   //ユーザー名が取得できた場合はログイン中として扱う
+//   useEffect(() => {
+//     const userNameData = localStorage.getItem(USER_NAME_KEY)
+//     if (userNameData) {
+//       setUserName(userNameData)
+//       setIsLoggedIn(true)
+//     }
+//     setIsLoginCheckDone(true)
+//   }, [])
+
+//   return { isLoggedIn, isLoginCheckDone, login, logout, userName, setUserName }
+// }
