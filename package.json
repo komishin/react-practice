@@ -14,7 +14,7 @@
   "author": "shinji-komiya",
   "main": "js/script.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "lint": "eslint js",
     "lint:fix": "eslint js --fix",
     "format": "prettier . --write",
