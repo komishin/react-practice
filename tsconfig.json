@@ -16,7 +16,8 @@
       "@testing-library/jest-dom",
       "@testing-library/react",
       "node"
-    ]
+    ],
+    "isolatedModules": true,
   },
   "include": ["src/**/*"]
 }
