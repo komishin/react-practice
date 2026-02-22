@@ -44,7 +44,7 @@ describe('NewTodoFormのコンポーネントのテスト', () => {
 
     fireEvent.click(button)
 
-    expect(mockAddTodo).toHaveBeenCalledWith('掃除', '山田太郎', '2026-02-20' )
+    expect(mockAddTodo).toHaveBeenCalledWith('掃除', '山田太郎', '2026-02-20')
 
     expect(task).toHaveValue('')
     expect(person).toHaveValue('')

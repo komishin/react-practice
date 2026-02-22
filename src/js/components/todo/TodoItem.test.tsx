@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
-import { TodoItem } from './TodoItem'
 import { Table, Tbody } from '@chakra-ui/react'
 import { BrowserRouter } from 'react-router-dom'
+import { TodoItem } from './TodoItem'
 
 const mockUseAuthStore = jest.fn()
 
