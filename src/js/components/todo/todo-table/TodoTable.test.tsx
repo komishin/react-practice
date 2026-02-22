@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { TodoTable } from './TodoTable'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { TodoTable } from './TodoTable'
 
 describe('TodoTableコンポーネントのテスト', () => {
   test('コンポーネントがレンダリングされること', () => {
@@ -72,8 +72,8 @@ describe('TodoTableコンポーネントのテスト', () => {
     )
     const buttonList = screen.getAllByRole('button', { name: '削除' })
     fireEvent.click(buttonList[0])
-    expect(mockDeleteTodo).toHaveBeenCalledWith("123")
+    expect(mockDeleteTodo).toHaveBeenCalledWith('123')
     fireEvent.click(buttonList[1])
-    expect(mockDeleteTodo).toHaveBeenCalledWith("456")
+    expect(mockDeleteTodo).toHaveBeenCalledWith('456')
   })
 })

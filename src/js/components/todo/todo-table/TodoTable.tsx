@@ -10,8 +10,8 @@ import {
   Tr,
 } from '@chakra-ui/react'
 import React, { memo } from 'react'
-import { Todo } from '../../types/todo'
-import { TodoItem } from './TodoItem'
+import { Todo } from '../../../types/todo'
+import { TodoItem } from '../todo-item'
 
 type Props = {
   todoList: Todo[]
