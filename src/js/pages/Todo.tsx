@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { NewTodoForm } from '../components/todo/new-todo-forrm'
 import { useTodoList } from '../hooks/use-todoList'
 import { Box, Heading, Input } from '@chakra-ui/react'
-import { TodoTable } from '../components/todo/todo-table/TodoTable'
+import { TodoTable } from '../components/todo/todo-table'
 import { Layout } from '../components/layout/Layout'
 
 export const Todo = () => {
