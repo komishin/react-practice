@@ -1,26 +1,45 @@
-import js from '@eslint/js'
-import globals from 'globals' // 1. これを追加
+import js from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+import storybook from "eslint-plugin-storybook";
 
-export default [
-  js.configs.recommended, // 2. 推奨設定の書き方を修正
+export default tseslint.config(
+  // 1. 基本設定（JS/TSの推奨設定を統合）
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+
   {
-    files: ['**/*.js'],
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
+      ecmaVersion: "latest",
+      sourceType: "module",
       globals: {
-        ...globals.browser, // 3. ブラウザ環境の変数（documentなど）を許可
+        ...globals.browser,
+        ...globals.node,
+      },
+      // 修正ポイント：projectServiceを使わずに、単純なプロジェクト指定に切り替え
+      parserOptions: {
+        project: ["./tsconfig.json"], // 明示的にtsconfigを参照させる
+        tsconfigRootDir: import.meta.dirname,
       },
     },
     rules: {
-      'no-unused-vars': 'warn',
-      'no-undef': 'warn',
-      'no-console': 'warn', // 本番環境に console.log を残さないようにする
-      eqeqeq: 'error', // == ではなく === を強制する（型一致の厳格な比較）
-      'no-var': 'error', // var を禁止し、let か const を使わせる
-      'prefer-const': 'warn', // 再代入しない変数は const を使うよう促す
-      curly: 'error', // if文などの {} を省略させない（バグ防止）
-      'no-multi-spaces': 'warn', // 不要なスペースを禁止する
+      "no-unused-vars": "warn",
+      "no-undef": "warn",
+      "no-console": "warn",
+      eqeqeq: "error",
+      "no-var": "error",
+      "prefer-const": "warn",
+      curly: "error",
+      // Storybookのファイルで satisfies を使うために必要な設定
+      "@typescript-eslint/no-unused-vars": ["warn"],
     },
   },
-]
+
+  // 2. Storybook用の設定
+  ...storybook.configs["flat/recommended"],
+
+  // 3. 設定ファイル自体（eslint.config.mjs）をチェック対象から外す
+  {
+    ignores: ["eslint.config.mjs"],
+  }
+);
