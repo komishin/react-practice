@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { Button, Td, Tr } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import { useAuthStore } from '../../stores/use-auth-store'
+import { useAuthStore } from '../../../stores/use-auth-store'
 
 type TodoItemProps = {
   id: string
