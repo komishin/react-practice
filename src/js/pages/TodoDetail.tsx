@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useTodoList } from '../hooks/use-todoList'
-import { Layout } from '../components/layout/Layout'
+import { Layout } from '../components/layout'
 import { NotFound } from './NotFound'
 
 export const TodoDetail = () => {
